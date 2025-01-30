@@ -9,7 +9,7 @@ body {
     overflow: hidden; /* Prevent scrolling */
 }
 
-.signup-form, .login-form, .profile-form {
+.signup-form, .login-form {
     border: 1px solid #ccc;
     padding: 20px;
     border-radius: 5px;
@@ -22,11 +22,11 @@ body {
     margin: 0 auto;
 }
 
-.signup-form h2, .login-form h2, .profile-form h2 {
+.signup-form h2, .login-form h2 {
     text-align: center;
 }
 
-.signup-form input, .login-form input, .profile-form input {
+.signup-form input, .login-form input {
     display: block;
     width: calc(100% - 22px); /* Adjust width to fit within the form area */
     margin-bottom: 10px;
@@ -35,7 +35,7 @@ body {
     border-radius: 5px;
 }
 
-.signup-form button, .login-form button, .profile-form button {
+.signup-form button, .login-form button {
     width: 100%;
     padding: 10px;
     background-color: #4CAF50;
@@ -46,7 +46,7 @@ body {
     margin-top: auto;
 }
 
-.signup-form button:hover, .login-form button:hover, .profile-form button:hover {
+.signup-form button:hover, .login-form button:hover {
     background-color: #45a049;
 }
 
@@ -54,4 +54,77 @@ body {
     color: red;
     text-align: center;
     margin-top: 10px;
+}
+
+
+.profile-box h2, .update-box h3 {
+    text-align: center;
+}
+
+.profile-info {
+    margin-bottom: 20px;
+}
+
+.profile-info label {
+    font-weight: bold;
+}
+
+.profile-info span {
+    margin-left: 10px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.button-group button {
+    width: 48%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#logoutButton {
+    background-color: #007BFF;
+    color: white;
+}
+
+#logoutButton:hover {
+    background-color: #0056b3;
+}
+
+#deleteButton {
+    background-color: #DC3545;
+    color: white;
+}
+
+#deleteButton:hover {
+    background-color: #c82333;
+}
+
+.update-box input {
+    display: block;
+    width: calc(100% - 22px); /* Adjust width to fit within the form area */
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.update-box button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: auto;
+}
+
+.update-box button:hover {
+    background-color: #45a049;
 }

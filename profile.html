@@ -20,18 +20,87 @@
         .top-right:hover {
             background-color: #45a049;
         }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            width: 80%;
+        }
+        .profile-box, .update-box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 60%; /* Adjusted width */
+            max-width: 1000px; /* Adjusted width */
+        }
+        .profile-info {
+            margin-bottom: 20px;
+        }
+        .profile-info label {
+            font-weight: bold;
+        }
+        .profile-info span {
+            margin-left: 10px;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .button-group button {
+            width: 48%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #logoutButton {
+            background-color: #007BFF;
+            color: white;
+        }
+        #logoutButton:hover {
+            background-color: #0056b3;
+        }
+        #deleteButton {
+            background-color: #DC3545;
+            color: white;
+        }
+        #deleteButton:hover {
+            background-color: #c82333;
+        }
     </style>
 </head>
 <body>
     <button class="top-right" onclick="location.href='signup.html'">Go to Homepage</button>
-    <div class="profile-form">
-        <h2>Profile</h2>
-        <p>Welcome to your profile page!</p>
-        <input type="text" id="name" placeholder="Name" required>
-        <input type="email" id="email" placeholder="Email" required>
-        <input type="text" id="contact" placeholder="Contact No" required>
-        <button id="updateButton">Update</button>
-        <div id="output"></div>
+    <div class="container">
+        <div class="profile-box">
+            <h2>Profile</h2>
+            <div class="profile-info">
+                <label>Name:</label>
+                <span id="profile-name"></span>
+            </div>
+            <div class="profile-info">
+                <label>Email:</label>
+                <span id="profile-email"></span>
+            </div>
+            <div class="profile-info">
+                <label>Contact No:</label>
+                <span id="profile-contact"></span>
+            </div>
+            <div class="button-group">
+                <button id="logoutButton">Logout</button>
+                <button id="deleteButton">Delete Profile</button>
+            </div>
+        </div>
+        <div class="update-box">
+            <h3>Update Information</h3>
+            <input type="text" id="update-name" placeholder="update-name">
+            <input type="email" id="update-email" placeholder="update-email">
+            <input type="text" id="update-contact" placeholder="update-contact">
+            <button id="updateButton">Update</button>
+            <div id="output"></div>
+        </div>
     </div>
     <script src="src/renderer.js"></script>
 </body>

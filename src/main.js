@@ -3,7 +3,7 @@ const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 const bcrypt = require('bcrypt'); 
 
-const dbDir = path.join(__dirname, '..', 'database'); // Move up one level from src
+const dbDir = path.join(__dirname, '..', 'database'); 
 const dbPath = path.join(dbDir, 'app.db');
 
 const db = new sqlite3.Database(dbPath, (err) => {
@@ -54,10 +54,9 @@ function createWindow() {
         width: 800,
         height: 600,
         webPreferences: {
-            preload: path.join(__dirname, 'preload.js'),  // ✅ Correct path
-            contextIsolation: true,
+            preload: path.join(__dirname, 'preload.js'),  
             enableRemoteModule: false,
-            nodeIntegration: false  // ✅ Must remain false for security
+            nodeIntegration: false 
         }
     });
 
@@ -92,29 +91,11 @@ ipcMain.handle('create-user', async (event, userData) => {
         console.log('Extracted fields:', {
             name,
             email,
-            contact, // This should not be undefined
+            contact, 
             password: password ? '[PRESENT]' : '[MISSING]'
         });
-        
-        // // Check if user already exists
-        const existingUser = await db.get(
-            'SELECT email FROM users WHERE email = ?',
-            [email]
-        );
-        
-        console.log('Existing user:', existingUser);
-        // if (existingUser) {
-        //     return { 
-        //         success: false, 
-        //         error: 'Email already registered' 
-        //     };
-        // }
 
-
-        // Hash password before storing (using bcrypt)
         const hashedPassword = await bcrypt.hash(password, 10);
-        
-        // Insert new user
         const result = await db.run(
             'INSERT INTO users (name, email, contact_no, password) VALUES (?, ?, ?, ?)',
             [name, email, contact, hashedPassword]
@@ -147,6 +128,53 @@ ipcMain.handle('login-user', async (event, loginData) => {
                 } else {
                     resolve({ success: false, error: 'Incorrect password' });
                 }
+            }
+        });
+    });
+});
+
+ipcMain.handle('get-user-by-id', async (event, userId) => {
+    return new Promise((resolve, reject) => {
+        db.get('SELECT name, email, contact_no FROM users WHERE id = ?', [userId], (err, row) => {
+            if (err) {
+                console.error('Error fetching user:', err);
+                reject(err);
+            } else {
+                resolve(row || null);  // Return null if user not found
+            }
+        });
+    });
+});
+
+ipcMain.handle('update-user', async (event, userData) => {
+    const { id, name, email, contact } = userData;
+    return new Promise((resolve, reject) => {
+        db.run(
+            'UPDATE users SET name = ?, email = ?, contact_no = ? WHERE id = ?',
+            [name, email, contact, id],
+            function (err) {
+                if (err) {
+                    console.error('Error updating user:', err);
+                    reject(err);
+                } else {
+                    resolve({ success: true, changes: this.changes });
+                }
+            }
+        );
+    });
+});
+
+ipcMain.handle('delete-user', async (event, userId) => {
+    return new Promise((resolve, reject) => {
+        db.run('DELETE FROM users WHERE id = ?', [userId], function (err) {
+            if (err) {
+                console.error('Error deleting user:', err);
+                reject({ success: false, error: err.message });
+            } else if (this.changes === 0) {
+                resolve({ success: false, error: 'User not found' });
+            } else {
+                console.log(`User with ID ${userId} deleted successfully.`);
+                resolve({ success: true });
             }
         });
     });
