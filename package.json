@@ -1,0 +1,30 @@
+{
+  "name": "my-electron-app",
+  "version": "1.0.0",
+  "description": "A simple Electron application",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --enable-logging",
+    "package": "electron-packager . my-electron-app --platform=win32 --arch=x64 --out=dist/"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "better-sqlite3": "^11.8.1",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "electron": "^25.9.8",
+    "electron-packager": "^17.1.1"
+  },
+  "build": {
+    "appId": "com.mycompany.myelectronapp",
+    "productName": "MyElectronApp",
+    "directories": {
+      "output": "dist"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        .top-right {
+            position: absolute;
+            top: 30px; /* Adjusted to be a bit lower */
+            right: 30px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .top-right:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <button class="top-right" onclick="location.href='login.html'">Login</button>
+    <div class="signup-form">
+        <h2>Signup</h2>
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="email" id="signup-email" placeholder="Email" required>
+        <input type="text" id="contact" placeholder="Contact No" required>
+        <input type="password" id="signup-password" placeholder="Set Password" required>
+        <button id="signupButton">Signup</button>
+        <div id="output" class="output"></div>
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+    <script>
+        console.log('Loading renderer.js script');
+    </script>
+    <script src="./src/renderer.js"></script>
+</body>
+</html>

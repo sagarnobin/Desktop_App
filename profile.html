@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .top-right {
+            position: absolute;
+            top: 30px; /* Adjusted to be a bit lower */
+            right: 30px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .top-right:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <button class="top-right" onclick="location.href='signup.html'">Go to Homepage</button>
+    <div class="profile-form">
+        <h2>Profile</h2>
+        <p>Welcome to your profile page!</p>
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="text" id="contact" placeholder="Contact No" required>
+        <button id="updateButton">Update</button>
+        <div id="output"></div>
+    </div>
+    <script src="src/renderer.js"></script>
+</body>
+</html>

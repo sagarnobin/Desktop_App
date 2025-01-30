@@ -1,0 +1,57 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px; /* Central padding for all pages */
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.signup-form, .login-form, .profile-form {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.signup-form h2, .login-form h2, .profile-form h2 {
+    text-align: center;
+}
+
+.signup-form input, .login-form input, .profile-form input {
+    display: block;
+    width: calc(100% - 22px); /* Adjust width to fit within the form area */
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.signup-form button, .login-form button, .profile-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: auto;
+}
+
+.signup-form button:hover, .login-form button:hover, .profile-form button:hover {
+    background-color: #45a049;
+}
+
+.output {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
