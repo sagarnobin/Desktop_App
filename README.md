@@ -9,8 +9,7 @@ This is a desktop application built with Electron.js and SQLite as an in-memory 
 my-electron-app
 ├── src
 │   ├── main.js        # Main process of the Electron application
-│   ├── renderer.js    # Renderer process for UI interactions
-│   ├── db.js          # Database interactions
+│   ├── renderer.js    # Renderer process for UI interactions        
 │   ├── preload.js     # Preload script
 ├── signup.html        # Signup page
 ├── login.html         # Login page
